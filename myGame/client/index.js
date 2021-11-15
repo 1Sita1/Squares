@@ -11,7 +11,7 @@ centerX = canvas.width / 2;
 centerY = canvas.height / 2;
 
 let players = [];
-let playerSize = 25;
+let playerSize = 30;
 
 let playerTrails = [];
 
@@ -27,55 +27,38 @@ class Player {
         this.direction = newDirection;
     }
     move() {
+
+	if (this.y - playerSize >= 0 || this.y + playerSize * 2 <= canvas.height || this.x - playerSize >= 0 || this.x + playerSize * 2 <= canvas.width) {
+		let index = playerTrails.findIndex((element) => {
+                    return element[0] == this.x && element[1] == this.y;
+                });
+                if (index != -1) {
+                    playerTrails.splice(index, 1);
+                } 
+                playerTrails.push([this.x, this.y, this.trailColor]);
+	}	
+
         switch(this.direction) {
             case "up":
                 if (this.y - playerSize >= 0) {
-                    let index = playerTrails.findIndex((element) => {
-                        return element[0] == this.x && element[1] == this.y;
-                    });
-                    if (index != -1) {
-                        playerTrails.splice(index, 1);
-                    } 
-                    playerTrails.push([this.x, this.y, this.trailColor]);
                     this.y = this.y - playerSize;
                 }
             break;
 
             case "down":
                 if (this.y + playerSize * 2 <= canvas.height) {
-                    let index = playerTrails.findIndex((element) => {
-                        return element[0] == this.x && element[1] == this.y;
-                    });
-                    if (index != -1) {
-                        playerTrails.splice(index, 1);
-                    } 
-                    playerTrails.push([this.x, this.y, this.trailColor]);
                     this.y = this.y + playerSize;
                 }
             break;
 
             case "left":
                 if (this.x - playerSize >= 0) {
-                    let index = playerTrails.findIndex((element) => {
-                        return element[0] == this.x && element[1] == this.y;
-                    });
-                    if (index != -1) {
-                        playerTrails.splice(index, 1);
-                    } 
-                    playerTrails.push([this.x, this.y, this.trailColor]);
                     this.x = this.x - playerSize;
                 }
             break;
 
             case "right":
                 if (this.x + playerSize * 2 <= canvas.width) {
-                    let index = playerTrails.findIndex((element) => {
-                        return element[0] == this.x && element[1] == this.y;
-                    });
-                    if (index != -1) {
-                        playerTrails.splice(index, 1);
-                    } 
-                    playerTrails.push([this.x, this.y, this.trailColor]);
                     this.x = this.x + playerSize;
                 }
             break;
@@ -101,6 +84,7 @@ players.push(player4);
 
 
 function mainCycle() {
+    const t0 = performance.now();
     canvas.setAttribute("width", $("body").width());
     canvas.setAttribute("height", $("body").height());
     centerX = canvas.width / 2;
@@ -108,8 +92,18 @@ function mainCycle() {
     clearCanvas();
     drawTrails();
     randomMoves();
+    const t1 = performance.now();
+    displayFps(t1 - t0);
 }
-setInterval(mainCycle, 20);
+setInterval(mainCycle, 15);
+
+function displayFps(timing) {
+    ctx.beginPath();
+    ctx.font = "20px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText("fps: " + Math.floor(1000 / timing), 10, 30);
+    ctx.closePath();
+}
 
 function randomMoves() {
     for (let i = 0; i < players.length; i++) {
