@@ -1,0 +1,120 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #616161;
+  font-family: "Poppins", sans-serif;
+  font-family: "Shippori Antique", sans-serif;
+  font-size: 20px;
+}
+
+#wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  transform: scale(0.8);
+  margin-bottom: 100px;
+  margin-right: 50px;
+}
+
+#canvas-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#winner-block {
+  position: absolute;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+#winner-name {
+  font-size: 80px;
+  font-weight: 900;
+  font-style: italic;
+}
+#winner-title {
+  font-size: 52px;
+  font-weight: 600;
+  color: #e0e0e0;
+  margin-top: -15px;
+}
+#shadow {
+  position: absolute;
+  height: 100.2%;
+  width: 100%;
+  z-index: 120;
+  background-color: rgba(30, 30, 30, 0.8);
+}
+canvas {
+  /* border: 10px solid #757575; */
+  position: relative;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}
+
+#left-block > div {
+  margin-bottom: 12px;
+  color: #e0e0e0;
+}
+
+#timer {
+  display: flex;
+  align-items: center;
+}
+#time-left {
+  font-size: 24px;
+  margin-left: 10px;
+  margin-top: -3px;
+}
+#timer-icon {
+  height: 24px;
+  width: auto;
+}
+
+.tickAnimated {
+  animation: tickAnimation 1s infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes tickAnimation {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.timeLow {
+  animation: lowTimeAnimation 3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+@keyframes lowTimeAnimation {
+  100% {
+    transform: scale(1.1);
+    color: #d32f2f;
+  }
+}
+
+#player-scores {
+  display: flex;
+  flex-direction: column;
+  background-color: #607d8b;
+  margin-right: 20px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 140px;
+  box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, 0.2);
+}

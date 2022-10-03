@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TVT21C</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,800;0,900;1,400;1,800;1,900&family=Shippori+Antique&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="left-block">
+                <div id="player-scores">
+
+                </div>
+                <div id="timer">
+                    <img src="clock.png" alt="" id="timer-icon">
+                    <span id="time-left"></span>
+                </div>
+            </div>
+            <div id="canvas-wrapper">
+                <div id="shadow"></div>
+                <div id="winner-block">
+                    <span id="winner-name">RED</span>
+                    <span id="winner-title">wins</span>
+                </div>
+                <canvas id="main" width="540" height="540"></canvas> 
+            </div>
+            <!-- <canvas id="main" width="540" height="540"></canvas> -->
+        </div>
+        <script src="https://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src="index.js" async defer></script>
+    </body>
+</html>
