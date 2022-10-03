@@ -214,7 +214,6 @@ function movePlayers() {
         let player = players[i];
         if (player.constructor.name == "Bot") {
             let rand = Math.random();
-            console.log(rand);
             if (Math.round(rand * 10) % 2 == 0) {
                 if (rand < 1 && rand > 0.8) {
                     player.changeDirection("up");
